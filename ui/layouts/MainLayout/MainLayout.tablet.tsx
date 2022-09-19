@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   },
   menuWrapper: {
     width: 250,
-    borderWidth: 1,
+    borderRightWidth: 1,
     textAlign: 'left',
     height: '100%',
     overflowY: 'auto',
