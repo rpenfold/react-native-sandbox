@@ -53,7 +53,7 @@ export function ThemeProvider(props) {
         <ThemeContext.Provider value={theme}>
             {children}
         </ThemeContext.Provider>
-    )
+    );
 }
 
 export function useTheme() {
