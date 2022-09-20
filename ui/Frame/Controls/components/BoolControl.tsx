@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, Switch, View} from 'react-native';
-import {ControlDefinition} from '../../sandbox.types';
+import {ControlDefinition} from '../../../../sandbox.types';
 import sharedStyles from './sharedStyles';
 import useSandbox from '../../../../src/useSandbox';
 import { useTheme } from '../../../theme';

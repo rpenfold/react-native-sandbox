@@ -1,6 +1,6 @@
 import React, {ReactNode} from 'react';
 import {Animated, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import Collapsible from 'react-native-collapsible';
+import Collapsible from 'react-native-collapsible/Collapsible';
 import { useTheme } from '../theme';
 
 const styles = StyleSheet.create({

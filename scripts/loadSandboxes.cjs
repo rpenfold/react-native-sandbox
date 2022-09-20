@@ -63,18 +63,18 @@ async function findClosestPackageJson(filePath) {
   const loaderResolvers = mainPackage.sandbox?.loader?.resolve ?? {};
 
   for (const filePath of sandboxFilePaths) {
-    const {info: package, dir} = await findClosestPackageJson(filePath);
+    const {info: pckg, dir} = await findClosestPackageJson(filePath);
 
     sandboxFiles.push({
       path: filePath,
       name: extractModuleName(filePath),
       resolvedPath:
-        package.name === mainPackage.name
+      pckg.name === mainPackage.name
           ? Object.keys(loaderResolvers).reduce(
               (prev, curr) => prev.replace(curr, loaderResolvers[curr]),
               filePath,
             )
-          : filePath.replace(path.relative(projectDir, dir), package.name),
+          : filePath.replace(path.relative(projectDir, dir), pckg.name),
     });
   }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import { useTheme } from '../../../theme';
-import {ControlDefinition} from '../../sandbox.types';
+import {ControlDefinition} from '../../../../sandbox.types';
 
 const styles = StyleSheet.create({
   labelContainer: {
