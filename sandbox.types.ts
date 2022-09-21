@@ -18,11 +18,11 @@ export interface ControlDefinition {
   type: ControlType;
   label: string;
   value: any;
-  options?: Array<{label: string; value: string}>;
+  options?: Array<{label: string; value: string | number}>;
 }
 
 export interface SandboxContextData {
-  activeComponent: ReactNode;
+  activeComponent: any;
   components: Array<ReactNode>;
   docs?: string;
   setActiveComponent(component: ReactNode): void;
@@ -30,6 +30,8 @@ export interface SandboxContextData {
   loadControls(controls: Record<string, ControlDefinition>): void;
   registerDocs(content: string): void;
   registerControl(control: ControlDefinition): any;
+  removeControl(control: ControlDefinition | string): void;
+  updateControl(control: Partial<ControlDefinition>): void;
   updateControlValue(label: string, value: any): void;
   controls: Array<ControlDefinition>;
 }

@@ -23,18 +23,19 @@ function SandboxContextProvider(props) {
     });
   }, []);
 
-  const removeControl = React.useCallback((control: ControlDefinition) => {
-    setControls((curr) => curr.filter((x) => x.label === control.label));
-  });
+  const removeControl = React.useCallback((control: ControlDefinition | string) => {
+    const label = typeof control === 'string' ? control : control.label;
+    setControls((curr) => curr.filter((x) => x.label === label));
+  }, []);
 
-  const updateControl = React.useCallback((control: ControlDefinition) => {
+  const updateControl = React.useCallback((control: Partial<ControlDefinition>) => {
     setControls((curr) => {
       const index = curr.findIndex((x) => x.label === control.label);
-      curr[index] = { ...curr[index], control };
+      curr[index] = { ...curr[index], control } as ControlDefinition;
 
       return curr;
     });
-  });
+  }, []);
 
   const loadControls = React.useCallback(
     (controlsData: Record<string, ControlDefinition>) => {
@@ -50,7 +51,7 @@ function SandboxContextProvider(props) {
   const clearControls = React.useCallback(() => setControls([]), []);
 
   const handleSetActiveComponent = React.useCallback(
-    (component: ReactNode) => {
+    (component: any) => {
       clearControls();
       setDocs(undefined);
       setActiveComponent(() => component);

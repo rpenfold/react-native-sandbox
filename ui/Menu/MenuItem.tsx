@@ -33,7 +33,7 @@ interface Props {
   activeComponent: any;
   subItems: Record<string, ReactNode>;
   title: string;
-  onPress(component: ReactNode): void;
+  onPress(component: any): void;
 }
 
 function MenuItem(props: Props) {

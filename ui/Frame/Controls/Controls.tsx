@@ -12,7 +12,7 @@ function Controls() {
   const {controls} = React.useContext(SandboxContext);
   const { colors } = useTheme();
   return (
-    <View style={[styles.container, { background: colors.background }]}>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
       <SafeAreaView />
       {controls.map((control, index) => (
         <Control key={index} {...control} />

@@ -95,7 +95,7 @@ function MainPhoneLayout(props: MainLayoutProps) {
             activeComponent={activeComponent}
             components={components}
             onPress={(...args) => {
-              setActiveComponent(...args);
+              setActiveComponent.apply(null, args);
               setTimeout(setShowMenu.bind(null, false), 200);
             }}
             logo={logo}
