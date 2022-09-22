@@ -1,13 +1,15 @@
 {
   "name": "react-native-sandbox",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "description": "A sandbox environment for building, documenting, and presenting components in React Native",
-  "main": "index.ts",
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rpenfold/react-native-sandbox.git"
   },
   "scripts": {
+    "build": "rm -rf ./dist && tsc",
+    "prepare": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "typecheck": "tsc --noEmit"
   },
