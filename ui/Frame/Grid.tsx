@@ -32,8 +32,8 @@ interface Props {
 
 function Grid(props: Props) {
   const {size = 20, color = 'rgba(0, 0, 0, 0.15)', type = 'line'} = props;
-  const [width, setWidth] = useState<number>(null);
-  const [height, setHeight] = useState<number>(null);
+  const [width, setWidth] = useState<number>(0);
+  const [height, setHeight] = useState<number>(0);
   let grid;
 
   if (type === 'dot') {

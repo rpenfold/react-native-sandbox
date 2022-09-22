@@ -44,7 +44,7 @@ export const DarkTheme: Theme = {
     },
 }
 
-const ThemeContext = createContext<Theme | null>(null);
+const ThemeContext = createContext<Theme>(DefaultTheme);
 
 export function ThemeProvider(props) {
     const { theme = DefaultTheme, children } = props;

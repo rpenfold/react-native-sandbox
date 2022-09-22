@@ -13,9 +13,9 @@ function useDivider() {
       value: ""
     });
 
-    return () => {
-      context.removeControl();
-    }
+    // return () => {
+    //   context.removeControl();
+    // }
   }, []);
 }
 

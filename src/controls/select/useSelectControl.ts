@@ -12,7 +12,7 @@ function useSelectControl<T = string | number>(
   
   const resolvedOptions = options.map(option => 
     ['string', 'number'].includes(typeof option) ? { label: option, value: option } : option
-  );
+  ) as Array<{label: string; value: string | number}>;
 
   React.useEffect(() => {
     registerControl({
