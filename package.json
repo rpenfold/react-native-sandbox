@@ -1,6 +1,6 @@
 {
   "name": "react-native-sandbox",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "description": "A sandbox environment for building, documenting, and presenting components in React Native",
   "main": "dist/index.js",
   "repository": {
