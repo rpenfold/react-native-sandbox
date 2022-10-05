@@ -9,7 +9,6 @@ function SandboxContextProvider(props) {
     setActiveComponent,
   ] = React.useState<ReactNode | null>(null);
   const [controls, setControls] = React.useState<Array<ControlDefinition>>([]);
-  const [docs, setDocs] = React.useState<string>();
 
   const registerControl = React.useCallback((control: ControlDefinition) => {
     setControls((curr) => {
@@ -37,23 +36,11 @@ function SandboxContextProvider(props) {
     });
   }, []);
 
-  const loadControls = React.useCallback(
-    (controlsData: Record<string, ControlDefinition>) => {
-      setControls(Object.values(controlsData));
-    },
-    [setControls],
-  );
-
-  const registerDocs = React.useCallback((content: string) => {
-    setDocs(content);
-  }, []);
-
   const clearControls = React.useCallback(() => setControls([]), []);
 
   const handleSetActiveComponent = React.useCallback(
     (component: ReactNode) => {
       clearControls();
-      setDocs(undefined);
       setActiveComponent(() => component);
     },
     [clearControls],
@@ -73,11 +60,8 @@ function SandboxContextProvider(props) {
       value={{
         activeComponent,
         components,
-        docs,
         setActiveComponent: handleSetActiveComponent,
         clearControls,
-        loadControls,
-        registerDocs,
         registerControl,
         removeControl,
         updateControl,

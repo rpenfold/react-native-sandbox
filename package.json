@@ -17,7 +17,7 @@
     "sandbox-loader": "./scripts/loadSandboxes.cjs"
   },
   "peerDependencies": {
-    "react": ">=17",
+    "react": ">=16",
     "react-native": ">=0.60"
   },
   "keywords": [

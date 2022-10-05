@@ -24,11 +24,8 @@ export interface ControlDefinition {
 export interface SandboxContextData {
   activeComponent: any;
   components: Array<ReactNode>;
-  docs?: string;
   setActiveComponent(component: any): void;
   clearControls(): void;
-  loadControls(controls: Record<string, ControlDefinition>): void;
-  registerDocs(content: string): void;
   registerControl(control: ControlDefinition): any;
   removeControl(control: ControlDefinition | string): void;
   updateControl(control: Partial<ControlDefinition>): void;
