@@ -1,5 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import SandboxRoot, { useText, useDivider, useColor, useBoolean, useSelect, useNumber, DarkTheme, useInfo } from 'react-native-sandbox';
+import SandboxRoot, { DarkTheme } from 'react-native-sandbox';
+import ControlsPlugin, { useText, useDivider, useColor, useBoolean, useSelect, useNumber, useInfo } from 'react-native-sandbox/plugins/controls';
+import DocsPlugin, { useDoc } from 'react-native-sandbox/plugins/docs';
 
 const SIZES = [
   { label: 'small', value: 10 },
@@ -62,6 +64,12 @@ export function ButtonPlayground() {
 }
 
 export function ButtonVariations() {
+  useDoc(`Does this work
+with multiple
+lines?
+
+yup
+  `)
   return (
     <View style={{padding: 16}}>
       {TYPES.map((type) => (
@@ -105,7 +113,7 @@ const components = [
 
 export default function App() {
   return (
-    <SandboxRoot components={components} />
+    <SandboxRoot components={components} plugins={[ControlsPlugin, DocsPlugin]} />
   );
 }
 

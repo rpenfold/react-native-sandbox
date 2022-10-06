@@ -1,74 +1,50 @@
 import React, {ReactNode} from 'react';
-import {ControlDefinition} from '../sandbox.types';
+import { PanelDefinition, SandboxContextData } from '../sandbox.types';
 import SandboxContext from './SandboxContext';
 
 function SandboxContextProvider(props) {
-  const {children, components} = props;
+  const {children, components, plugins} = props;
   const [
     activeComponent,
     setActiveComponent,
   ] = React.useState<ReactNode | null>(null);
-  const [controls, setControls] = React.useState<Array<ControlDefinition>>([]);
+  const [componentPanels, setComponentPanels] = React.useState<any>([]);
 
-  const registerControl = React.useCallback((control: ControlDefinition) => {
-    setControls((curr) => {
-      const existing = curr.find((x) => x.label === control.label);
+  const registerComponentPanel = React.useCallback((panel: PanelDefinition) => {
+    if (componentPanels.find(p => panel.id === p)) {
+      return;
+    }
 
-      if (existing) {
-        return curr;
-      }
-
-      return [...curr, control];
-    });
+    setComponentPanels(panels => [...panels, panel]);
   }, []);
 
-  const removeControl = React.useCallback((control: ControlDefinition | string) => {
-    const label = typeof control === 'string' ? control : control.label;
-    setControls((curr) => curr.filter((x) => x.label === label));
-  }, []);
-
-  const updateControl = React.useCallback((control: Partial<ControlDefinition>) => {
-    setControls((curr) => {
-      const index = curr.findIndex((x) => x.label === control.label);
-      curr[index] = { ...curr[index], ...control };
-
-      return curr;
-    });
-  }, []);
-
-  const clearControls = React.useCallback(() => setControls([]), []);
+  const clearPanels = React.useCallback(() => setComponentPanels([]), []);
 
   const handleSetActiveComponent = React.useCallback(
     (component: ReactNode) => {
-      clearControls();
+      clearPanels();
       setActiveComponent(() => component);
     },
-    [clearControls],
+    [],
   );
 
-  const updateControlValue = (label: string, value: any) => {
-    setControls((c) => {
-      const index = c.findIndex((x) => x.label === label);
-      c[index] = {...c[index], value};
-
-      return [...c];
-    });
+  const context: SandboxContextData = {
+    activeComponent,
+    components,
+    componentPanels,
+    setActiveComponent: handleSetActiveComponent,
+    registerComponentPanel,
   };
 
   return (
     <SandboxContext.Provider
-      value={{
-        activeComponent,
-        components,
-        setActiveComponent: handleSetActiveComponent,
-        clearControls,
-        registerControl,
-        removeControl,
-        updateControl,
-        updateControlValue,
-        controls,
-      }}>
-      {children}
+      value={context}
+    >
+      {plugins
+        .filter(p => p.provider)
+        .map(p => p.provider)
+        .reduceRight((child, C) => (<C context={context}>{child}</C>), children)
+      }
     </SandboxContext.Provider>
   );
 }

@@ -1,7 +1,6 @@
 import React from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { useTheme } from '../../theme';
-import Controls from '../Controls';
 import Grid from '../Grid';
 
 const styles = StyleSheet.create({
@@ -19,10 +18,12 @@ const styles = StyleSheet.create({
 });
 
 export default function HorizontalFrameContent(props) {
-  const { background, showGrid, gridType, gridSize, controls, activeComponent  } = props;
+  const { background, showGrid, gridType, gridSize, activeComponent, componentPanels  } = props;
   const { colors } = useTheme();
 
   const Component = (activeComponent as any).component;
+  const panel = componentPanels[0];
+  const Panel = panel?.component;
 
     return (
       <View style={styles.container}>
@@ -30,10 +31,10 @@ export default function HorizontalFrameContent(props) {
           <Component />
           {showGrid && <Grid size={gridSize} type={gridType} />}
         </View>
-        {activeComponent && !!controls.length && (
+        {!!panel && (
           <View style={[styles.controls, { borderLeftColor: colors.divider }]}>
             <ScrollView>
-              <Controls />
+              <Panel />
             </ScrollView>
           </View>
         )}

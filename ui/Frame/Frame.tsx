@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {StyleSheet, Text, View, useWindowDimensions} from 'react-native';
+import {ScrollView, StyleSheet, Text, View, useWindowDimensions} from 'react-native';
 import useSandbox from '../../src/useSandbox';
 import NoSelectionEmptyState from './NoSelectionEmptyState';
 import FrameContent from './layouts/FrameContent';
@@ -9,8 +9,10 @@ import Chip from '../components/Chip';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: '100%',
   },
   toolbar: {
+    flexGrow: 0,
     flexDirection: 'row',
     borderBottomWidth: 1,
     padding: 8,
@@ -45,7 +47,7 @@ function Frame() {
     );
   }
 
-  const {activeComponent, controls} = context;
+  const {activeComponent, componentPanels} = context;
 
   if (!activeComponent) {
     return <NoSelectionEmptyState />;
@@ -53,7 +55,7 @@ function Frame() {
 
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
-      <View style={[styles.toolbar, { borderColor: colors.divider}]}>
+      <ScrollView horizontal style={[styles.toolbar, { borderColor: colors.divider}]}>
         <Chip
           text={`Background: ${background}`}
           isSelected={true}
@@ -83,15 +85,15 @@ function Frame() {
             onPress={() => { setGridType(curr => curr === 'line' ? 'dot' : 'line')}}
           />
         )}
-      </View>
+      </ScrollView>
       <FrameContent
         layout={layout}
         background={background}
         gridSize={gridSize}
         gridType={gridType}
         showGrid={showGrid}
-        controls={controls}
         activeComponent={activeComponent}
+        componentPanels={componentPanels}
       />
     </View>
   );

@@ -21,14 +21,20 @@ export interface ControlDefinition {
   options?: Array<{label: string; value: string | number}>;
 }
 
+export interface PanelDefinition {
+  id: string;
+  title: string;
+  component: ReactNode;
+}
+
 export interface SandboxContextData {
   activeComponent: any;
   components: Array<ReactNode>;
+  componentPanels: Array<PanelDefinition>;
+  registerComponentPanel(panel: PanelDefinition): void;
   setActiveComponent(component: any): void;
-  clearControls(): void;
-  registerControl(control: ControlDefinition): any;
-  removeControl(control: ControlDefinition | string): void;
-  updateControl(control: Partial<ControlDefinition>): void;
-  updateControlValue(label: string, value: any): void;
-  controls: Array<ControlDefinition>;
+}
+
+export interface Plugin {
+  provider: ReactNode;
 }
