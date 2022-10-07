@@ -9,14 +9,15 @@ function SandboxContextProvider(props) {
     setActiveComponent,
   ] = React.useState<ReactNode | null>(null);
   const [componentPanels, setComponentPanels] = React.useState<any>([]);
+  const [activePanel, setActivePanel] = React.useState<string | null>(null);
 
   const registerComponentPanel = React.useCallback((panel: PanelDefinition) => {
-    if (componentPanels.find(p => panel.id === p)) {
+    if (componentPanels.find(p => panel.id === p.id)) {
       return;
     }
 
     setComponentPanels(panels => [...panels, panel]);
-  }, []);
+  }, [componentPanels]);
 
   const clearPanels = React.useCallback(() => setComponentPanels([]), []);
 
@@ -30,9 +31,11 @@ function SandboxContextProvider(props) {
 
   const context: SandboxContextData = {
     activeComponent,
+    activePanel,
     components,
     componentPanels,
     setActiveComponent: handleSetActiveComponent,
+    setActivePanel,
     registerComponentPanel,
   };
 

@@ -1,7 +1,9 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import useSandbox from '../../../useSandbox';
 import { useTheme } from '../../theme';
 import Grid from '../Grid';
+import TabGroup from './components/TabGroup';
 
 const styles = StyleSheet.create({
   container: {
@@ -14,14 +16,22 @@ const styles = StyleSheet.create({
     flex: 1,
     borderTopWidth: 1,
   },
+  tabGroup: {
+    bottom: '100%',
+    position: 'absolute',
+    flexDirection: 'row',
+  },
 });
 
 export default function VerticalFrameContent(props) {
   const { background, showGrid, gridType, gridSize, activeComponent, componentPanels  } = props;
+  const { activePanel, setActivePanel } = useSandbox();
   const { colors } = useTheme();
 
   const Component = (activeComponent as any).component;
-  const panel = componentPanels[0];
+  const panel = activePanel
+    ? componentPanels.find(p => p.id === activePanel)
+    : componentPanels[0];
   const Panel = panel?.component;
 
     return (
@@ -31,7 +41,17 @@ export default function VerticalFrameContent(props) {
           {showGrid && <Grid size={gridSize} type={gridType} />}
         </View>
         {!!Panel && (
-          <View style={[styles.controls, { backgroundColor: colors.surface, borderColor: colors.divider }]}>
+          <View style={[styles.controls, { borderColor: colors.divider }]}>
+            <TabGroup
+              style={styles.tabGroup}
+              tabs={componentPanels.map((p) => ({
+                id: p.id,
+                title: p.title,
+                activeColor: p.activeTabColor,
+                isSelected: p.id === panel.id,
+                onPress: setActivePanel
+              }))}
+            />
             <ScrollView>
               <Panel />
             </ScrollView>

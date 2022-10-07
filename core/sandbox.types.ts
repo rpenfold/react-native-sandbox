@@ -25,14 +25,17 @@ export interface PanelDefinition {
   id: string;
   title: string;
   component: ReactNode;
+  activeTabColor: string;
 }
 
 export interface SandboxContextData {
   activeComponent: any;
+  activePanel: string | null;
   components: Array<ReactNode>;
   componentPanels: Array<PanelDefinition>;
   registerComponentPanel(panel: PanelDefinition): void;
   setActiveComponent(component: any): void;
+  setActivePanel(id: string): void;
 }
 
 export interface Plugin {

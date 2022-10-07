@@ -48,6 +48,12 @@ export function ButtonPlayground() {
   const color = useColor('Color', 'red', COLORS);
   const type = useSelect('Type', 'solid', TYPES);
   const padding = useNumber('Padding', 16);
+  useDoc(`Does this work
+with multiple
+lines?
+
+yup
+  `)
 
   return (
     <View style={{ padding: 20 }}>

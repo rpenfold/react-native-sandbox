@@ -1,8 +1,7 @@
 import React from 'react';
 import {SafeAreaView, StyleSheet, View} from 'react-native';
-import SandboxContext from '../../../../../core/src/SandboxContext';
 import Control from './Control';
-import { useTheme } from 'react-native-sandbox';
+import { useTheme } from 'react-native-sandbox/src/ui/theme';
 import useControls from '../../useControls';
 
 const styles = StyleSheet.create({
