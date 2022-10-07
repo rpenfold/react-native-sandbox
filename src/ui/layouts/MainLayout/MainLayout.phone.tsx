@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import {SafeAreaView, StyleSheet, Text, TouchableHighlight, View} from 'react-native';
 import Menu from '../../Menu';
 import UIFrame from '../../Frame';
-import useSandbox from '../../../src/useSandbox';
+import useSandbox from '../../../useSandbox';
 import { useTheme } from '../../theme';
 import { MainLayoutProps } from './MainLayout.types';
 import Drawer, { DrawerPosition } from '../../components/Drawer';

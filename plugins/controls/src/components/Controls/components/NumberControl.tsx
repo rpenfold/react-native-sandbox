@@ -2,7 +2,7 @@ import React from 'react';
 import {Text, TextInput, View} from 'react-native';
 import { ControlDefinition } from '../../../ControlsPluginContext';
 import sharedStyles from './sharedStyles';
-import { useTheme } from '../../../../../../ui/theme';
+import { useTheme } from 'react-native-sandbox/src/ui/theme';
 import useControls from '../../../useControls';
 
 function NumberControl(props: Omit<ControlDefinition, 'type'>) {

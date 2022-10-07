@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import { useTheme } from '../../../../../../ui/theme';
+import { useTheme } from 'react-native-sandbox/src/ui/theme';
 
 const styles = StyleSheet.create({
   divider: {

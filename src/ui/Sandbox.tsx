@@ -1,5 +1,5 @@
 import React from 'react';
-import SandboxContextProvider from '../src/SandboxContextProvider';
+import SandboxContextProvider from '../SandboxContextProvider';
 import MainLayout from './layouts/MainLayout';
 import { ThemeProvider, Theme } from './theme';
 

@@ -4,14 +4,13 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
+    "start:dev": "wml start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "sandbox": "sandbox-loader -o ./sandboxFiles.ts"
+    "sandbox": "sandbox-loader -o ./sandboxFiles.ts",
+    "setup": "wml rm all && wml add ../core ./node_modules/react-native-sandbox && wml add ../plugins/controls ./node_modules/@react-native-sandbox/controls && wml add ../plugins/docs ./node_modules/@react-native-sandbox/docs"
   },
-  "workspaces": [
-    ".."
-  ],
   "dependencies": {
     "@types/react": "~18.0.0",
     "@types/react-native": "~0.69.1",
@@ -20,11 +19,13 @@
     "react": "18.0.0",
     "react-native": "0.69.5",
     "react-native-collapsible": "1.6.0",
+    "react-native-sandbox": "*",
     "typescript": "^4.6.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
-    "glob": "7.1.6"
+    "glob": "7.1.6",
+    "wml": "0.0.83"
   },
   "private": true
 }

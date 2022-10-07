@@ -2,7 +2,7 @@ import React from 'react';
 import {Animated, StyleSheet, View} from 'react-native';
 import Menu from '../../Menu';
 import UIFrame from '../../Frame';
-import useSandbox from '../../../src/useSandbox';
+import useSandbox from '../../../useSandbox';
 import { useTheme } from '../../theme';
 import { MainLayoutProps } from './MainLayout.types';
 

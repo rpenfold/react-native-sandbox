@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {ScrollView, StyleSheet, Text, View, useWindowDimensions} from 'react-native';
-import useSandbox from '../../src/useSandbox';
+import useSandbox from '../../useSandbox';
 import NoSelectionEmptyState from './NoSelectionEmptyState';
 import FrameContent from './layouts/FrameContent';
 import { useTheme } from '../theme';

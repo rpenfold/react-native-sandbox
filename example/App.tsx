@@ -1,7 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import SandboxRoot, { DarkTheme } from 'react-native-sandbox';
-import ControlsPlugin, { useText, useDivider, useColor, useBoolean, useSelect, useNumber, useInfo } from 'react-native-sandbox/plugins/controls';
-import DocsPlugin, { useDoc } from 'react-native-sandbox/plugins/docs';
+import ControlsPlugin, { useText, useDivider, useColor, useBoolean, useSelect, useNumber, useInfo } from '@react-native-sandbox/controls';
+import DocsPlugin, { useDoc } from '@react-native-sandbox/docs';
 
 const SIZES = [
   { label: 'small', value: 10 },
