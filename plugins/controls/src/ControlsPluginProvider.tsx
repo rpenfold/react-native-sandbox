@@ -5,7 +5,7 @@ import ControlsPluginContext from './ControlsPluginContext';
 
 function ControlsPluginContextProvider(props) {
   const {children, context} = props;
-  const { activeComponent, registerComponentPanel } = context; // need an onBeforeSelectComponent()
+  const { activeComponent, registerComponentPanel } = context;
   const [controls, setControls] = React.useState<Array<ControlDefinition>>([]);
 
   const registerControl = React.useCallback((control: Omit<ControlDefinition, 'componentName'>) => {

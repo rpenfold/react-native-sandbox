@@ -12,6 +12,7 @@ function SandboxContextProvider(props) {
   const [activePanel, setActivePanel] = React.useState<string | null>(null);
 
   const registerComponentPanel = React.useCallback((panel: PanelDefinition) => {
+    console.debug(`registering ${panel.title}`)
     if (componentPanels.find(p => panel.id === p.id)) {
       return;
     }

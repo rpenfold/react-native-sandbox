@@ -1,4 +1,4 @@
-import {ReactNode} from 'react';
+import {ComponentType, ReactNode} from 'react';
 
 export enum ControlType {
   Boolean = 'boolean',
@@ -24,8 +24,8 @@ export interface ControlDefinition {
 export interface PanelDefinition {
   id: string;
   title: string;
-  component: ReactNode;
-  activeTabColor: string;
+  component: ReactNode | ComponentType;
+  activeTabColor?: string;
 }
 
 export interface SandboxContextData {

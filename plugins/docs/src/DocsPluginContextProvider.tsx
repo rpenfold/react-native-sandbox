@@ -1,10 +1,11 @@
 import React from 'react';
 import DocsPluginContext from './DocsPluginContext';
 import Document from './components/Document';
+import useSandbox from 'react-native-sandbox/src/useSandbox';
 
 function DocsPluginContextProvider(props) {
-  const {children, context} = props;
-  const { activeComponent, registerComponentPanel } = context;
+  const {children} = props;
+  const { activeComponent, registerComponentPanel } = useSandbox();
   const [document, setDocument] = React.useState<string | null>(null);
 
   const loadDocument = React.useCallback((doc: string) => {
@@ -15,7 +16,7 @@ function DocsPluginContextProvider(props) {
     if (document && document.trim() !== '') {
       registerComponentPanel({ id: 'docs', title: 'Docs', component: Document });
     }
-  }, [document]);
+  }, [document, activeComponent]);
 
   return (
     <DocsPluginContext.Provider
