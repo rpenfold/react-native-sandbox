@@ -1,5 +1,5 @@
 import React from 'react';
-import {Pressable, StyleSheet, Text, ViewProps} from 'react-native';
+import {Pressable, PressableProps, StyleSheet, Text, ViewStyle} from 'react-native';
 import { useTheme } from '../../theme';
 
 const styles = StyleSheet.create({
@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   },
 });
 
-interface Props extends ViewProps {
+interface Props extends PressableProps {
   children?: React.ReactNode;
   text?: string;
   isSelected?: boolean;
@@ -31,7 +31,7 @@ function Chip(props: Props) {
       style={[
           styles.chip,
           isSelected && { backgroundColor: colors.surface },
-          style
+          style as ViewStyle,
       ]}
       onPress={onPress}
       {...rest}

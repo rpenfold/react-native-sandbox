@@ -3,7 +3,10 @@ import React from 'react';
 export type GridType = 'line' | 'dot';
 
 export interface GridPluginContextData {
+    /* Whether the grid is enabled to be shown */
     enabled: boolean;
+    /* Whether the plugin is disabled for active sandbox */
+    disabled: boolean;
     size: number;
     color: string;
     type: GridType;
@@ -16,6 +19,7 @@ export interface GridPluginContextData {
 
 const GridPluginContext = React.createContext<GridPluginContextData>({
     enabled: false,
+    disabled: false,
     size: 0,
     color: '',
     type: 'line',

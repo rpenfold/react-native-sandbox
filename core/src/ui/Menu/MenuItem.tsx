@@ -1,6 +1,7 @@
 import React, {ReactNode} from 'react';
 import {Animated, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Collapsible from 'react-native-collapsible/Collapsible';
+import { ComponentDefinition } from '../../../sandbox.types';
 import { useTheme } from '../theme';
 
 const styles = StyleSheet.create({
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
 
 interface Props {
   activeComponent: any;
-  subItems: Record<string, ReactNode>;
+  subItems: Record<string, ReactNode | ComponentDefinition>;
   title: string;
   onPress(component: any): void;
 }
@@ -72,6 +73,7 @@ function MenuItem(props: Props) {
               const isSelected =
                 activeComponent?.group === title &&
                 activeComponent.name === key;
+              const maybeComponent = subItems[key];
               return (
                 <TouchableOpacity
                   key={key}
@@ -80,7 +82,8 @@ function MenuItem(props: Props) {
                     onPress({
                       group: title,
                       name: key,
-                      component: subItems[key],
+                      component: (maybeComponent as ComponentDefinition).component ?? maybeComponent,
+                      plugins: (maybeComponent as ComponentDefinition).plugins
                     });
                   }}>
                   <Text style={{color: colors.text}}>{key}</Text>

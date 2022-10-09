@@ -114,7 +114,14 @@ const components = [
     name: 'Button',
     components: {
       ButtonPlayground,
-      'Variations': ButtonVariations,
+      'Variations': {
+        component: ButtonVariations,
+        plugins: {
+          grid: {
+            enabled: false,
+          },
+        }
+      },
     },
   },
 ];

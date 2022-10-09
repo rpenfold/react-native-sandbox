@@ -15,6 +15,11 @@ export enum ControlType {
 
 export type InfoLevel = 'info' | 'warning' | 'error' | 'success';
 
+export type ComponentDefinition = {
+  component: ReactNode;
+  plugins: Record<string, boolean>
+};
+
 export interface ControlDefinition {
   type: ControlType;
   label: string;

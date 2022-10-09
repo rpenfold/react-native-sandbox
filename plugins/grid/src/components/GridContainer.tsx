@@ -3,9 +3,9 @@ import GridPluginContext from '../GridPluginContext';
 import GridLayer from './GridLayer';
 
 function GridContainer() {
-    const { enabled, size, color, type } = React.useContext(GridPluginContext);
+    const { enabled, disabled, size, color, type } = React.useContext(GridPluginContext);
 
-    if (!enabled) {
+    if (!enabled || disabled) {
         return null;
     }
 

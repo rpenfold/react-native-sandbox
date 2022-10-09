@@ -1,6 +1,7 @@
 import React from 'react';
 import useSandbox from 'react-native-sandbox/src/useSandbox';
 import { useTheme } from 'react-native-sandbox/src/ui/theme';
+import getSandboxOptionsForPlugin from 'react-native-sandbox/src/utils/getSandboxOptionsForPlugin';
 import GridPluginContext, { GridType } from './GridPluginContext';
 import GridContainer from './components/GridContainer';
 import { SizeChip, TypeChip } from './components/ToolbarItems';
@@ -15,9 +16,13 @@ function GridPluginContextProvider(props) {
   const [size, setSize] = React.useState<number>(20);
   const [color, setColor] = React.useState<string>('rgba(0, 0, 0, 0.15)');
   const [type, setType] = React.useState<GridType>('line');
+  const [disabled, setDisabled] = React.useState<boolean>(false);
 
   React.useEffect(() => {
-    if (activeComponent) {
+    const options = getSandboxOptionsForPlugin('grid', activeComponent);
+    const disable = options.enabled === false;
+
+    if (activeComponent && !disable) {
       registerLayer({ id: 'grid', component: GridContainer });
       registerToolbarGroup({
         id: 'grid',
@@ -25,7 +30,10 @@ function GridPluginContextProvider(props) {
           { id: 'grid-size', component: SizeChip },
           { id: 'grid-type', component: TypeChip },
         ],
-      })
+      });
+      setDisabled(false);
+    } else if (disable) {
+      setDisabled(true);
     }
   }, [activeComponent]);
 
@@ -33,6 +41,7 @@ function GridPluginContextProvider(props) {
     <GridPluginContext.Provider
       value={{
         enabled,
+        disabled,
         size,
         color,
         type,

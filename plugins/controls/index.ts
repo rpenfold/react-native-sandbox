@@ -11,5 +11,6 @@ export {default as useSelect} from './src/controls/select/useSelectControl';
 export {default as useText} from './src/controls/text/useTextControl';
 
 export default {
+    id: 'controls',
     provider: ControlsPluginContextProvider
 };

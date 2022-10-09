@@ -4,6 +4,7 @@ import getNextArrayItem from 'react-native-sandbox/src/utils/getNextArrayItem';
 import Chip from 'react-native-sandbox/src/ui/components/Chip';
 import Icon from 'react-native-sandbox/src/ui/components/Icon';
 import { GRID_SIZE_OPTIONS, GRID_TYPE } from '../GridPluginContextProvider';
+import { useTheme } from 'react-native-sandbox/src/ui/theme';
 
 export function SizeChip(props) {
     const { style } = props;
@@ -52,10 +53,17 @@ export function SizeChip(props) {
 
 export function TypeChip() {
     const { enabled, type, setType } = React.useContext(GridPluginContext);
+    const { colors } = useTheme();
 
     return (
-        <Chip onPress={() => setType(getNextArrayItem(GRID_TYPE)(type))} >
-            <Icon name={type === "dot" ? "dots-grid" : "grid-large"} />
+        <Chip
+            onPress={() => setType(getNextArrayItem(GRID_TYPE)(type))}
+            disabled={!enabled}
+        >
+            <Icon
+                name={type === "dot" ? "dots-grid" : "grid-large"}
+                color={!enabled ? colors.disabled : undefined}
+            />
         </Chip>
     );
 }

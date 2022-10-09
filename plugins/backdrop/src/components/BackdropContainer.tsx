@@ -3,7 +3,11 @@ import BackdropPluginContext from '../BackdropPluginContext';
 import BackdropLayer from './BackdropLayer';
 
 function BackdropContainer() {
-    const { backdrop } = React.useContext(BackdropPluginContext);
+    const { backdrop, disabled } = React.useContext(BackdropPluginContext);
+
+    if (disabled) {
+        return null;
+    }
 
     return (
         <BackdropLayer

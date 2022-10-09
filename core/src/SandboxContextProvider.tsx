@@ -27,9 +27,12 @@ function SandboxContextProvider(props) {
     setToolbarGroups((groups) => groups.find(g => g.id === group.id) ? groups : [...groups, group]);
   }, []);
 
+  const clearToolbarGroups = React.useCallback(() => setToolbarGroups([]), []);
+
   const handleSetActiveComponent = React.useCallback(
     (component: ReactNode) => {
       clearPanels();
+      clearToolbarGroups();
       setActiveComponent(() => component);
     },
     [],
