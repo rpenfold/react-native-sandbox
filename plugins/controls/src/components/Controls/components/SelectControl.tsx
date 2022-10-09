@@ -3,7 +3,7 @@ import { StyleSheet, Text, View} from 'react-native';
 import { ControlDefinition } from '../../../ControlsPluginContext';
 import sharedStyles from './sharedStyles';
 import { useTheme } from 'react-native-sandbox/src/ui/theme';
-import Chip from '../../../../../../core/src/ui/components/Chip';
+import Chip from 'react-native-sandbox/src/ui/components/Chip';
 import useControls from '../../../useControls';
 
 const styles = StyleSheet.create({

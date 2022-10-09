@@ -24,8 +24,8 @@ const styles = StyleSheet.create({
 });
 
 export default function VerticalFrameContent(props) {
-  const { background, showGrid, gridType, gridSize, activeComponent, componentPanels  } = props;
-  const { activePanel, setActivePanel } = useSandbox();
+  const { background, activeComponent, componentPanels  } = props;
+  const { activePanel, setActivePanel, layers } = useSandbox();
   const { colors } = useTheme();
 
   const Component = (activeComponent as any).component;
@@ -38,7 +38,11 @@ export default function VerticalFrameContent(props) {
       <View style={styles.container}>
         <View style={[styles.frame, { backgroundColor: background }]}>
           <Component />
-          {showGrid && <Grid size={gridSize} type={gridType} />}
+          {layers.map(({ id, component: Layer }) => (
+            <View key={id} style={StyleSheet.absoluteFill} pointerEvents="none">
+              <Layer />
+            </View>
+          ))}
         </View>
         {!!Panel && (
           <View style={[styles.controls, { borderColor: colors.divider }]}>

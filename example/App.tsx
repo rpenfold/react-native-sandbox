@@ -2,6 +2,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import SandboxRoot, { DarkTheme } from 'react-native-sandbox';
 import ControlsPlugin, { useText, useDivider, useColor, useBoolean, useSelect, useNumber, useInfo } from '@react-native-sandbox/controls';
 import DocsPlugin, { useDoc } from '@react-native-sandbox/docs';
+import GridPlugin from '@react-native-sandbox/grid';
 
 const SIZES = [
   { label: 'small', value: 10 },
@@ -119,7 +120,7 @@ const components = [
 
 export default function App() {
   return (
-    <SandboxRoot components={components} plugins={[ControlsPlugin, DocsPlugin]} />
+    <SandboxRoot components={components} plugins={[ControlsPlugin, DocsPlugin, GridPlugin]} />
   );
 }
 

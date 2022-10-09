@@ -1,5 +1,5 @@
 import React, {ReactNode} from 'react';
-import { PanelDefinition, SandboxContextData } from '../sandbox.types';
+import { LayerDefinition, PanelDefinition, SandboxContextData, ToolbarGroupDefinition } from '../sandbox.types';
 import SandboxContext from './SandboxContext';
 
 function SandboxContextProvider(props) {
@@ -10,17 +10,22 @@ function SandboxContextProvider(props) {
   ] = React.useState<ReactNode | null>(null);
   const [componentPanels, setComponentPanels] = React.useState<any>([]);
   const [activePanel, setActivePanel] = React.useState<string | null>(null);
+  const [layers, setLayers] = React.useState<Array<LayerDefinition>>([]);
+  const [toolbarGroups, setToolbarGroups] = React.useState<Array<ToolbarGroupDefinition>>([]);
 
   const registerComponentPanel = React.useCallback((panel: PanelDefinition) => {
-    console.debug(`registering ${panel.title}`)
-    if (componentPanels.find(p => panel.id === p.id)) {
-      return;
-    }
-
-    setComponentPanels(panels => [...panels, panel]);
+    setComponentPanels(panels => panels.find(p => panel.id === p.id) ? panels : [...panels, panel]);
   }, [componentPanels]);
 
   const clearPanels = React.useCallback(() => setComponentPanels([]), []);
+
+  const registerLayer = React.useCallback((layer: LayerDefinition) => {
+    setLayers((_layers) => _layers.find(l => l.id === layer.id) ? _layers : [..._layers, layer]);
+  }, []);
+
+  const registerToolbarGroup = React.useCallback((group: ToolbarGroupDefinition) => {
+    setToolbarGroups((groups) => groups.find(g => g.id === group.id) ? groups : [...groups, group]);
+  }, []);
 
   const handleSetActiveComponent = React.useCallback(
     (component: ReactNode) => {
@@ -35,9 +40,13 @@ function SandboxContextProvider(props) {
     activePanel,
     components,
     componentPanels,
+    layers,
+    toolbarGroups,
     setActiveComponent: handleSetActiveComponent,
     setActivePanel,
     registerComponentPanel,
+    registerLayer,
+    registerToolbarGroup,
   };
 
   return (

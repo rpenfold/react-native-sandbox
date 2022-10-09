@@ -5,6 +5,7 @@ import NoSelectionEmptyState from './NoSelectionEmptyState';
 import FrameContent from './layouts/FrameContent';
 import { useTheme } from '../theme';
 import Chip from '../components/Chip';
+import Icon from '../components/Icon';
 
 const styles = StyleSheet.create({
   container: {
@@ -17,11 +18,22 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     padding: 8,
   },
+  toolbarGroup: {
+    flexDirection: 'row',
+  },
+  itemWrapper: {
+
+  },
+  divider: {
+    alignSelf: 'center',
+    height: '80%',
+    width: 1,
+    marginHorizontal: 8,
+  }
 });
 
 const BACKGROUND_OPTIONS = ['white', 'black', 'gray'];
 const LAYOUT_OPTIONS = ['horizontal', 'vertical'];
-const GRID_SIZE_OPTIONS = [10, 20, 50];
 
 function getNextArrayItem(arr) {
   return function (curr) {
@@ -33,9 +45,6 @@ function Frame() {
   const context = useSandbox();
   const {colors} = useTheme();
   const { width } = useWindowDimensions();
-  const [showGrid, setShowGrid] = useState(false);
-  const [gridSize, setGridSize] = useState(20);
-  const [gridType, setGridType] = useState('line');
   const [layout, setLayout] = useState(width < 600 ? 'vertical' : 'horizontal');
   const [background, setBackground] = useState(colors.background);
 
@@ -47,51 +56,44 @@ function Frame() {
     );
   }
 
-  const {activeComponent, componentPanels} = context;
+  const {activeComponent, componentPanels, toolbarGroups} = context;
 
   if (!activeComponent) {
     return <NoSelectionEmptyState />;
   }
 
+  const divider =  <View style={[styles.divider, { backgroundColor: colors.divider }]} />
+
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
-      <ScrollView horizontal style={[styles.toolbar, { borderColor: colors.divider}]}>
+      <ScrollView
+        style={[styles.toolbar, { borderColor: colors.divider}]}
+        contentContainerStyle={{ justifyContent: 'center' }}
+        horizontal
+      >
+        <Chip onPress={() => { setLayout(getNextArrayItem(LAYOUT_OPTIONS))}}>
+          <Icon name={layout === 'vertical' ? 'view-split-horizontal' : 'view-split-vertical'} />
+        </Chip>
+       {divider}
+        {toolbarGroups.map((group, groupIndex) => (
+          <View key={group.id} style={styles.toolbarGroup}>
+            {group.items.map(({ id, component: ToolbarItem }, itemIndex) => (
+              <ToolbarItem key={id} style={{ marginRight: itemIndex < group.items.length ? 4 : 0 }} />
+            ))}
+            {group.items.length > 1 && groupIndex < toolbarGroups.length - 1 && (
+              divider
+            )}
+          </View>
+        ))}
         <Chip
           text={`Background: ${background}`}
           isSelected={true}
           onPress={() => { setBackground(getNextArrayItem(BACKGROUND_OPTIONS))}}
         />
-        <Chip
-          text={`Layout: ${layout}`}
-          isSelected={true}
-          onPress={() => { setLayout(getNextArrayItem(LAYOUT_OPTIONS))}}
-        />
-        <Chip
-          text="Grid"
-          isSelected={showGrid}
-          onPress={() => { setShowGrid(curr => !curr)}}
-        />
-        {showGrid && (
-          <Chip
-            text={`Grid Size: ${gridSize}`}
-            isSelected={true}
-            onPress={() => { setGridSize(curr => GRID_SIZE_OPTIONS[(GRID_SIZE_OPTIONS.findIndex(val => val === curr) + 1) % GRID_SIZE_OPTIONS.length])}}
-          />
-        )}
-        {showGrid && (
-          <Chip
-            text={`Grid Type: ${gridType}`}
-            isSelected={true}
-            onPress={() => { setGridType(curr => curr === 'line' ? 'dot' : 'line')}}
-          />
-        )}
       </ScrollView>
       <FrameContent
         layout={layout}
         background={background}
-        gridSize={gridSize}
-        gridType={gridType}
-        showGrid={showGrid}
         activeComponent={activeComponent}
         componentPanels={componentPanels}
       />

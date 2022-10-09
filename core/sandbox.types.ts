@@ -1,4 +1,5 @@
-import {ComponentType, ReactNode} from 'react';
+import React, {Component, ComponentType, ReactNode} from 'react';
+import { ViewStyle } from 'react-native';
 
 export enum ControlType {
   Boolean = 'boolean',
@@ -28,12 +29,32 @@ export interface PanelDefinition {
   activeTabColor?: string;
 }
 
+export interface LayerDefinition {
+  id: string;
+  component: ComponentType;
+  level?: number;
+}
+
+export interface ToolbarItemDefinition {
+  id: string;
+  component: ComponentType<{ style: ViewStyle }>;
+}
+
+export interface ToolbarGroupDefinition {
+  id: string;
+  items: Array<ToolbarItemDefinition>;
+}
+
 export interface SandboxContextData {
   activeComponent: any;
   activePanel: string | null;
   components: Array<ReactNode>;
   componentPanels: Array<PanelDefinition>;
+  layers: Array<LayerDefinition>;
+  toolbarGroups: Array<ToolbarGroupDefinition>;
   registerComponentPanel(panel: PanelDefinition): void;
+  registerLayer(layer: LayerDefinition): void;
+  registerToolbarGroup(group: ToolbarGroupDefinition): void;
   setActiveComponent(component: any): void;
   setActivePanel(id: string): void;
 }

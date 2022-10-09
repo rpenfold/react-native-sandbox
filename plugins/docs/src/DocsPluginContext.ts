@@ -10,5 +10,4 @@ const DocsPluginContext = React.createContext<DocsPluginContextData>({
     loadDocument: () => console.warn('docs plugin not ready'),
   });
   
-
   export default DocsPluginContext;

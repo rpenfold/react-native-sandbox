@@ -1,10 +1,10 @@
 {
-  "name": "@react-native-sandbox/controls",
+  "name": "@react-native-sandbox/docs",
   "version": "0.1.0",
-  "description": "A plugin for react-native-sandbox to enable support for controls",
+  "description": "A plugin for react-native-sandbox to enable support for documentation",
   "main": "index.ts",
   "scripts": {
-    "build": "rm -rf ../../dist/@react-native-sandbox/controls && tsc",
+    "build": "rm -rf ./dist && tsc",
     "prepare": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "typecheck": "tsc --noEmit"
