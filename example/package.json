@@ -9,7 +9,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "sandbox": "sandbox-loader -o ./sandboxFiles.ts",
-    "setup": "wml rm all && wml add ../core ./node_modules/react-native-sandbox && wml add ../plugins/controls ./node_modules/@react-native-sandbox/controls && wml add ../plugins/docs ./node_modules/@react-native-sandbox/docs&& wml add ../plugins/grid ./node_modules/@react-native-sandbox/grid"
+    "setup": "watchman watch-del-all && wml rm all && wml add ../core ./node_modules/react-native-sandbox && wml add ../plugins/controls ./node_modules/@react-native-sandbox/controls && wml add ../plugins/docs ./node_modules/@react-native-sandbox/docs && wml add ../plugins/grid ./node_modules/@react-native-sandbox/grid && wml add ../plugins/backdrop ./node_modules/@react-native-sandbox/backdrop"
   },
   "dependencies": {
     "@types/react": "~18.0.0",

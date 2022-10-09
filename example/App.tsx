@@ -3,6 +3,7 @@ import SandboxRoot, { DarkTheme } from 'react-native-sandbox';
 import ControlsPlugin, { useText, useDivider, useColor, useBoolean, useSelect, useNumber, useInfo } from '@react-native-sandbox/controls';
 import DocsPlugin, { useDoc } from '@react-native-sandbox/docs';
 import GridPlugin from '@react-native-sandbox/grid';
+import BackdropPlugin from '@react-native-sandbox/backdrop';
 
 const SIZES = [
   { label: 'small', value: 10 },
@@ -120,7 +121,7 @@ const components = [
 
 export default function App() {
   return (
-    <SandboxRoot components={components} plugins={[ControlsPlugin, DocsPlugin, GridPlugin]} />
+    <SandboxRoot components={components} plugins={[ControlsPlugin, DocsPlugin, GridPlugin, BackdropPlugin]} />
   );
 }
 

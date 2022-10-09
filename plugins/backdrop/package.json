@@ -1,7 +1,7 @@
 {
-  "name": "@react-native-sandbox/docs",
+  "name": "@react-native-sandbox/backdrop",
   "version": "0.1.0",
-  "description": "A plugin for react-native-sandbox to enable support for documentation",
+  "description": "A plugin for react-native-sandbox to add a backdrop layer to sandboxes",
   "main": "index.ts",
   "scripts": {
     "build": "rm -rf ./dist && tsc",

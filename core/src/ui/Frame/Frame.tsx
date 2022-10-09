@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
   }
 });
 
-const BACKGROUND_OPTIONS = ['white', 'black', 'gray'];
 const LAYOUT_OPTIONS = ['horizontal', 'vertical'];
 
 function getNextArrayItem(arr) {
@@ -46,7 +45,6 @@ function Frame() {
   const {colors} = useTheme();
   const { width } = useWindowDimensions();
   const [layout, setLayout] = useState(width < 600 ? 'vertical' : 'horizontal');
-  const [background, setBackground] = useState(colors.background);
 
   if (!context) {
     return (
@@ -80,20 +78,14 @@ function Frame() {
             {group.items.map(({ id, component: ToolbarItem }, itemIndex) => (
               <ToolbarItem key={id} style={{ marginRight: itemIndex < group.items.length ? 4 : 0 }} />
             ))}
-            {group.items.length > 1 && groupIndex < toolbarGroups.length - 1 && (
+            {groupIndex < toolbarGroups.length - 1 && (
               divider
             )}
           </View>
         ))}
-        <Chip
-          text={`Background: ${background}`}
-          isSelected={true}
-          onPress={() => { setBackground(getNextArrayItem(BACKGROUND_OPTIONS))}}
-        />
       </ScrollView>
       <FrameContent
         layout={layout}
-        background={background}
         activeComponent={activeComponent}
         componentPanels={componentPanels}
       />

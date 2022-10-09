@@ -11,7 +11,7 @@ export const GRID_TYPE: Array<GridType> = ['line', 'dot'];
 function GridPluginContextProvider(props) {
   const {children} = props;
   const { activeComponent, registerLayer, registerToolbarGroup } = useSandbox();
-  const [enabled, setEnabled] = React.useState<boolean>(true);
+  const [enabled, setEnabled] = React.useState<boolean>(false);
   const [size, setSize] = React.useState<number>(20);
   const [color, setColor] = React.useState<string>('rgba(0, 0, 0, 0.15)');
   const [type, setType] = React.useState<GridType>('line');

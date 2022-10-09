@@ -1,8 +1,7 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import useSandbox from '../../../useSandbox';
 import { useTheme } from '../../theme';
-import Grid from '../Grid';
 import TabGroup, { TAB_HEIGHT } from './components/TabGroup';
 
 const styles = StyleSheet.create({
@@ -26,7 +25,7 @@ const styles = StyleSheet.create({
 });
 
 export default function HorizontalFrameContent(props) {
-  const { background, activeComponent, componentPanels  } = props;
+  const { activeComponent, componentPanels  } = props;
   const { activePanel, setActivePanel, layers } = useSandbox();
   const { colors } = useTheme();
   const [tabsWidth, setTabsWidth] = React.useState<number>(0);
@@ -39,13 +38,18 @@ export default function HorizontalFrameContent(props) {
 
   return (
     <View style={styles.container}>
-      <View style={[styles.frame, { backgroundColor: background }]}>
+      <View style={styles.frame}>
+        {layers.filter(l => l.level !== undefined  && l.level < 0).map(({ id, component: Layer }) => (
+          <View key={id} style={StyleSheet.absoluteFill} pointerEvents="none">
+            <Layer />
+          </View>
+        ))}
         <Component />
-        {layers.map(({ id, component: Layer }) => (
-            <View key={id} style={StyleSheet.absoluteFill} pointerEvents="none">
-              <Layer />
-            </View>
-          ))}
+        {layers.filter(l => l.level === undefined || l.level >= 0).map(({ id, component: Layer }) => (
+          <View key={id} style={StyleSheet.absoluteFill} pointerEvents="none">
+            <Layer />
+          </View>
+        ))}
       </View>
       {!!panel && (
         <View style={[styles.controls, { borderLeftColor: colors.divider }]}>

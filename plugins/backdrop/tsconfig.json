@@ -1,0 +1,7 @@
+
+{
+  "extends": "react-native-sandbox/tsconfig",
+  "compilerOptions": {
+    "outDir": "../../dist/@react-native-sandbox/docs"
+  }
+}

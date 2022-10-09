@@ -1,8 +1,7 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import useSandbox from '../../../useSandbox';
 import { useTheme } from '../../theme';
-import Grid from '../Grid';
 import TabGroup from './components/TabGroup';
 
 const styles = StyleSheet.create({
@@ -24,7 +23,7 @@ const styles = StyleSheet.create({
 });
 
 export default function VerticalFrameContent(props) {
-  const { background, activeComponent, componentPanels  } = props;
+  const { activeComponent, componentPanels  } = props;
   const { activePanel, setActivePanel, layers } = useSandbox();
   const { colors } = useTheme();
 
@@ -34,33 +33,38 @@ export default function VerticalFrameContent(props) {
     : componentPanels[0];
   const Panel = panel?.component;
 
-    return (
-      <View style={styles.container}>
-        <View style={[styles.frame, { backgroundColor: background }]}>
-          <Component />
-          {layers.map(({ id, component: Layer }) => (
-            <View key={id} style={StyleSheet.absoluteFill} pointerEvents="none">
-              <Layer />
-            </View>
-          ))}
-        </View>
-        {!!Panel && (
-          <View style={[styles.controls, { borderColor: colors.divider }]}>
-            <TabGroup
-              style={styles.tabGroup}
-              tabs={componentPanels.map((p) => ({
-                id: p.id,
-                title: p.title,
-                activeColor: p.activeTabColor,
-                isSelected: p.id === panel.id,
-                onPress: setActivePanel
-              }))}
-            />
-            <ScrollView>
-              <Panel />
-            </ScrollView>
+  return (
+    <View style={styles.container}>
+      <View style={styles.frame}>
+        {layers.filter(l => l.level !== undefined  && l.level < 0).map(({ id, component: Layer }) => (
+          <View key={id} style={StyleSheet.absoluteFill} pointerEvents="none">
+            <Layer />
           </View>
-        )}
+        ))}
+        <Component />
+        {layers.filter(l => l.level === undefined || l.level >= 0).map(({ id, component: Layer }) => (
+          <View key={id} style={StyleSheet.absoluteFill} pointerEvents="none">
+            <Layer />
+          </View>
+        ))}
       </View>
-    )
+      {!!Panel && (
+        <View style={[styles.controls, { borderColor: colors.divider }]}>
+          <TabGroup
+            style={styles.tabGroup}
+            tabs={componentPanels.map((p) => ({
+              id: p.id,
+              title: p.title,
+              activeColor: p.activeTabColor,
+              isSelected: p.id === panel.id,
+              onPress: setActivePanel
+            }))}
+          />
+          <ScrollView>
+            <Panel />
+          </ScrollView>
+        </View>
+      )}
+    </View>
+  );
 }

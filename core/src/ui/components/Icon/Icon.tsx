@@ -3,7 +3,7 @@ import { Image, ImageProps } from 'react-native';
 import { useTheme } from '../../theme';
 import getIconByName from './assets';
 
-export type IconName = 'dots-grid' | 'grid' | 'grid-large' | 'grid-off' | 'view-split-horizontal' | 'view-split-vertical';
+export type IconName = 'cancel' | 'circle' | 'circle-opacity' | 'dots-grid' | 'grid' | 'grid-large' | 'grid-off' | 'view-split-horizontal' | 'view-split-vertical';
 
 interface Props extends ImageProps {
     color?: string;
