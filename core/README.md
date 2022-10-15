@@ -150,6 +150,10 @@ function App() {
 }
 ```
 
+## Migrating from 0.1.17
+
+Prior to v0.1.17 controls were part of the core library. In an effort to provide extensibility and scalable controls have been pulled into a separate plugin library `@react-native-sandbox/controls`. Please see that package for more information about configuring the plugin.
+
 ## Contributions
 
 Contributions are absolutely welcome! More details will hopefully come soon around how to get into building and extending the tool. At the moment, I am the sole developer of the project and work on it in my free time. Most of my work is intended to support my professional needs. If there is a feature that would benefit your workflows, feel free to reach out.
