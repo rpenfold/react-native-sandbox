@@ -1,9 +1,12 @@
+import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import SandboxRoot, { DarkTheme } from 'react-native-sandbox';
 import ControlsPlugin, { useText, useDivider, useColor, useBoolean, useSelect, useNumber, useInfo } from '@react-native-sandbox/controls';
 import DocsPlugin, { useDoc } from '@react-native-sandbox/docs';
 import GridPlugin from '@react-native-sandbox/grid';
 import BackdropPlugin from '@react-native-sandbox/backdrop';
+
+const LazyComponent = React.lazy(() => import('./components/LazyComponent'));
 
 const SIZES = [
   { label: 'small', value: 10 },
@@ -124,6 +127,12 @@ const components = [
       },
     },
   },
+  {
+    name: 'Demo',
+    components: {
+      LazyComponent,
+    }
+  }
 ];
 
 export default function App() {

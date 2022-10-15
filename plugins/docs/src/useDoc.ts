@@ -6,6 +6,10 @@ function useDoc(content: string) {
 
     React.useEffect(() => {
         context.loadDocument(content);
+
+        return (() => {
+            context.clearDocument();
+        });
     }, [content]);
 }
 

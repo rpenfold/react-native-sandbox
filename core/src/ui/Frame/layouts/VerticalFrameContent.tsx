@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import useSandbox from '../../../useSandbox';
 import { useTheme } from '../../theme';
 import TabGroup from './components/TabGroup';
@@ -41,7 +41,9 @@ export default function VerticalFrameContent(props) {
             <Layer />
           </View>
         ))}
-        <Component />
+        <React.Suspense fallback={<Text>Loading.....</Text>}>
+          <Component />
+        </React.Suspense>
         {layers.filter(l => l.level === undefined || l.level >= 0).map(({ id, component: Layer }) => (
           <View key={id} style={StyleSheet.absoluteFill} pointerEvents="none">
             <Layer />

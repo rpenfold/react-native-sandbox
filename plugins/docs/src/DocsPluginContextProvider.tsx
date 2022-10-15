@@ -8,6 +8,8 @@ function DocsPluginContextProvider(props) {
   const { activeComponent, registerComponentPanel } = useSandbox();
   const [document, setDocument] = React.useState<string | null>(null);
 
+  const clearDocument = React.useCallback(() => setDocument(null), []);
+
   const loadDocument = React.useCallback((doc: string) => {
     setDocument(doc);
   }, [activeComponent]);
@@ -20,11 +22,12 @@ function DocsPluginContextProvider(props) {
         component: () => <DocumentContainer renderer={options?.renderer} />,
       });
     }
-  }, [document, activeComponent]);
+  }, [document]);
 
   return (
     <DocsPluginContext.Provider
       value={{
+        clearDocument,
         loadDocument,
         document
       }}>

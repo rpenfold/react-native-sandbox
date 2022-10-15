@@ -44,7 +44,9 @@ export default function HorizontalFrameContent(props) {
             <Layer />
           </View>
         ))}
-        <Component />
+        <React.Suspense fallback={null}>
+          <Component />
+        </React.Suspense>
         {layers.filter(l => l.level === undefined || l.level >= 0).map(({ id, component: Layer }) => (
           <View key={id} style={StyleSheet.absoluteFill} pointerEvents="none">
             <Layer />
