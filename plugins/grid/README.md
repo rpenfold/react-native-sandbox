@@ -27,7 +27,7 @@ function Sandbox() {
 
 By default all sandboxes will now have the grid actions added to the toolbar. Tapping the icon will iterate over the different size configurations. (disabled, 10, 20, 50) You can also toggle between a line grid and a dot grid.
 
-![Demo](./docs/images/demo.gif)
+![Demo](/docs/images/grid-demo.gif)
 
 To disable grid on a given sandbox you can provide a plugin configuration:
 

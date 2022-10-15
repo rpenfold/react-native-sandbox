@@ -1,6 +1,6 @@
 {
   "name": "@react-native-sandbox/grid",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "description": "A plugin for react-native-sandbox to add a grid layer to sandboxes",
   "main": "dist/index.js",
   "scripts": {
