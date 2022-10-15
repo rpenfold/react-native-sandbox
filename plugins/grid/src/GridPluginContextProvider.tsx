@@ -10,11 +10,11 @@ export const GRID_SIZE_OPTIONS = [10, 20, 50];
 export const GRID_TYPE: Array<GridType> = ['line', 'dot'];
 
 function GridPluginContextProvider(props) {
-  const {children} = props;
+  const {children, options} = props;
   const { activeComponent, registerLayer, registerToolbarGroup } = useSandbox();
   const [enabled, setEnabled] = React.useState<boolean>(false);
   const [size, setSize] = React.useState<number>(20);
-  const [color, setColor] = React.useState<string>('rgba(0, 0, 0, 0.15)');
+  const [color, setColor] = React.useState<string>(options?.gridColor ?? 'rgba(0, 0, 0, 0.15)');
   const [type, setType] = React.useState<GridType>('line');
   const [disabled, setDisabled] = React.useState<boolean>(false);
 

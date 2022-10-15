@@ -1,6 +1,13 @@
 import GridPluginContextProvider from "./src/GridPluginContextProvider";
 
-export default {
+const plugin = {
     id: 'grid',
     provider: GridPluginContextProvider,
-};
+} as any;
+
+plugin.configure = (options) => ({
+    ...plugin,
+    options,
+});
+
+export default plugin;

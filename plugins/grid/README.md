@@ -51,3 +51,21 @@ export default {
     }
 }
 ```
+
+## Configuration
+
+The plugin can be configured as follows:
+
+```typescript
+import GridPlugin from '@react-native-sandbox/grid';
+
+// ...
+
+const plugin = GridPlugin.configure(options);
+```
+
+Where the following options are available:
+
+| Key | Type | Description |
+|---|---|---|
+| gridColor | string | Global override for the default grid color. |

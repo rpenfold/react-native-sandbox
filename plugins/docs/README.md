@@ -59,4 +59,4 @@ Where the following options are available:
 
 | Key | Type | Description |
 |---|---|---|
-| renderer | ComponentType | Overrides the default document renderer. Useful for customizing the way content is rendered. For example can replace with a markdown renderer to support markdown. Passes `content` prop with the value from the `useDoc` hook. |
+| renderer | ComponentType | Global override for the default document renderer. Useful for customizing the way content is rendered. For example can replace with a markdown, PDF, or other renderer. Passes `content` prop with the value from the `useDoc` hook. |
