@@ -69,3 +69,4 @@ Where the following options are available:
 | Key | Type | Description |
 |---|---|---|
 | gridColor | string | Global override for the default grid color. |
+| defaultType | "line", "dot" | Default grid type to use. |

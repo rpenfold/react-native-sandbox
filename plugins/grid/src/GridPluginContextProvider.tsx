@@ -15,7 +15,7 @@ function GridPluginContextProvider(props) {
   const [enabled, setEnabled] = React.useState<boolean>(false);
   const [size, setSize] = React.useState<number>(20);
   const [color, setColor] = React.useState<string>(options?.gridColor ?? 'rgba(0, 0, 0, 0.15)');
-  const [type, setType] = React.useState<GridType>('line');
+  const [type, setType] = React.useState<GridType>(options?.defaultType ?? 'line');
   const [disabled, setDisabled] = React.useState<boolean>(false);
 
   React.useEffect(() => {

@@ -133,7 +133,7 @@ export default function App() {
       plugins={[
         ControlsPlugin,
         DocsPlugin.configure({ renderer: (props) => <Text>{props.content}</Text> }),
-        GridPlugin.configure({ gridColor: 'red' }),
+        GridPlugin.configure({ gridColor: 'rgba(255, 0, 0, .15)', defaultType: 'dot' }),
         BackdropPlugin
       ]}
     />
