@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { useTheme } from 'react-native-sandbox/internal';
-import DocsPluginContext from '../DocsPluginContext';
 
 const styles = StyleSheet.create({
     container: {
@@ -10,13 +9,13 @@ const styles = StyleSheet.create({
     }
 });
 
-function Document() {
-    const context = React.useContext(DocsPluginContext);
+function Document(props) {
+    const { content } = props;
     const { colors } = useTheme();
 
     return (
         <View style={[styles.container, { backgroundColor: colors.background }]}>
-            <Text>{context.document}</Text>
+            <Text>{content}</Text>
         </View>
     )
 }

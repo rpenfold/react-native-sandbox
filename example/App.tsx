@@ -128,7 +128,15 @@ const components = [
 
 export default function App() {
   return (
-    <SandboxRoot components={components} plugins={[ControlsPlugin, DocsPlugin, GridPlugin, BackdropPlugin]} />
+    <SandboxRoot
+      components={components}
+      plugins={[
+        ControlsPlugin,
+        DocsPlugin.configure({ renderer: (props) => <Text>{props.content}</Text> }),
+        GridPlugin,
+        BackdropPlugin
+      ]}
+    />
   );
 }
 

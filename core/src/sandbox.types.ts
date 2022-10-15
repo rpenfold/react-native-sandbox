@@ -64,6 +64,8 @@ export interface SandboxContextData {
   setActivePanel(id: string): void;
 }
 
-export interface Plugin {
+export interface SandboxPlugin {
+  id: string;
   provider: ReactNode;
+  configure(options: Record<string, unknown>): void;
 }

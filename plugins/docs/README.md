@@ -42,3 +42,21 @@ function MyComponentSandbox() {
 ```
 
 Support for additional content types such as Markdown and React coming soon.
+
+## Configuration
+
+The plugin can be configured as follows:
+
+```typescript
+import DocsPlugin from '@react-native-sandbox/docs';
+
+// ...
+
+const plugin = DocsPlugin.configure(options);
+```
+
+Where the following options are available:
+
+| Key | Type | Description |
+|---|---|---|
+| renderer | ComponentType | Overrides the default document renderer. Useful for customizing the way content is rendered. For example can replace with a markdown renderer to support markdown. Passes `content` prop with the value from the `useDoc` hook. |

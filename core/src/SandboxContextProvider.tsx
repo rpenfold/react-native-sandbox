@@ -56,8 +56,7 @@ function SandboxContextProvider(props) {
     <SandboxContext.Provider value={context}>
       {plugins
         .filter(p => p.provider)
-        .map(p => p.provider)
-        .reduceRight((child, C) => (<C context={context}>{child}</C>), children)
+        .reduceRight((child, { provider: C, options }) => (<C context={context} options={options}>{child}</C>), children)
       }
     </SandboxContext.Provider>
   );
