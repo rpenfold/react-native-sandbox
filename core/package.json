@@ -1,8 +1,8 @@
 {
   "name": "react-native-sandbox",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "description": "A sandbox environment for building, documenting, and presenting components in React Native",
-  "main": "index.ts",
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rpenfold/react-native-sandbox.git"

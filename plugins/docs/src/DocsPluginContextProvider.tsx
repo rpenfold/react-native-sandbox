@@ -1,7 +1,7 @@
 import React from 'react';
+import { useSandbox } from 'react-native-sandbox/internal';
 import DocsPluginContext from './DocsPluginContext';
 import Document from './components/Document';
-import useSandbox from 'react-native-sandbox/src/useSandbox';
 
 function DocsPluginContextProvider(props) {
   const {children} = props;

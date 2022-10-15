@@ -1,7 +1,10 @@
 import React from 'react';
 import { Image, ImageProps } from 'react-native';
 import { useTheme } from '../../theme';
-import getIconByName from './assets';
+
+// Project configuration allows for the same relative position from both source
+// code and compiled output files. Attempts to use absolute paths were unreliable.
+import getIconByName from '../../../../assets/icons';
 
 export type IconName = 'cancel' | 'circle' | 'circle-opacity' | 'dots-grid' | 'grid' | 'grid-large' | 'grid-off' | 'view-split-horizontal' | 'view-split-vertical';
 

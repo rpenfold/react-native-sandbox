@@ -1,10 +1,9 @@
 import GridPluginContext from '../GridPluginContext';
 import React from 'react';
-import getNextArrayItem from 'react-native-sandbox/src/utils/getNextArrayItem'; 
-import Chip from 'react-native-sandbox/src/ui/components/Chip';
-import Icon from 'react-native-sandbox/src/ui/components/Icon';
+import { getNextArrayItem } from 'react-native-sandbox/internal'; 
+import { Chip, Icon } from 'react-native-sandbox/components';
 import { GRID_SIZE_OPTIONS, GRID_TYPE } from '../GridPluginContextProvider';
-import { useTheme } from 'react-native-sandbox/src/ui/theme';
+import { useTheme } from 'react-native-sandbox/internal';
 
 export function SizeChip(props) {
     const { style } = props;

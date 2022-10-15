@@ -1,5 +1,5 @@
 import React, {ReactNode} from 'react';
-import { LayerDefinition, PanelDefinition, SandboxContextData, ToolbarGroupDefinition } from '../sandbox.types';
+import { LayerDefinition, PanelDefinition, SandboxContextData, ToolbarGroupDefinition } from './sandbox.types';
 import SandboxContext from './SandboxContext';
 
 function SandboxContextProvider(props) {

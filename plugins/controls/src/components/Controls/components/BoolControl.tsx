@@ -2,7 +2,7 @@ import React from 'react';
 import {Text, Switch, View} from 'react-native';
 import { ControlDefinition } from '../../../ControlsPluginContext';
 import sharedStyles from './sharedStyles';
-import { useTheme } from 'react-native-sandbox/src/ui/theme';
+import { useTheme } from 'react-native-sandbox/internal';
 import useControls from '../../../useControls';
 
 const DARK_GREY = '#767577';

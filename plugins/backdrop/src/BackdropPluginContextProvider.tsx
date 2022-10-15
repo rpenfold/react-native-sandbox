@@ -1,8 +1,6 @@
 import React from 'react';
-import { Image } from 'react-native';
-import useSandbox from 'react-native-sandbox/src/useSandbox';
-import { useTheme } from 'react-native-sandbox/src/ui/theme';
-import getSandboxOptionsForPlugin from 'react-native-sandbox/src/utils/getSandboxOptionsForPlugin';
+import { useSandbox } from 'react-native-sandbox/internal';
+import { getSandboxOptionsForPlugin } from 'react-native-sandbox/internal';
 import BackdropPluginContext, { Backdrop } from './BackdropPluginContext';
 import BackdropContainer from './components/BackdropContainer';
 import { ColorChip } from './components/ToolbarItems';

@@ -1,7 +1,7 @@
 import React from 'react';
-import useSandbox from 'react-native-sandbox/src/useSandbox';
-import { useTheme } from 'react-native-sandbox/src/ui/theme';
-import getSandboxOptionsForPlugin from 'react-native-sandbox/src/utils/getSandboxOptionsForPlugin';
+import { useSandbox } from 'react-native-sandbox/internal';
+import { useTheme } from 'react-native-sandbox/internal';
+import { getSandboxOptionsForPlugin } from 'react-native-sandbox/internal';
 import GridPluginContext, { GridType } from './GridPluginContext';
 import GridContainer from './components/GridContainer';
 import { SizeChip, TypeChip } from './components/ToolbarItems';

@@ -2,8 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View} from 'react-native';
 import { ControlDefinition } from '../../../ControlsPluginContext';
 import sharedStyles from './sharedStyles';
-import { useTheme } from 'react-native-sandbox/src/ui/theme';
-import Chip from 'react-native-sandbox/src/ui/components/Chip';
+import { useTheme } from 'react-native-sandbox/internal';
+import { Chip } from 'react-native-sandbox/components';
 import useControls from '../../../useControls';
 
 const styles = StyleSheet.create({

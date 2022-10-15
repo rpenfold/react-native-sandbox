@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import { useTheme } from 'react-native-sandbox/src/ui/theme';
+import { useTheme } from 'react-native-sandbox/internal';
 import DocsPluginContext from '../DocsPluginContext';
 
 const styles = StyleSheet.create({

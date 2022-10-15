@@ -2,9 +2,8 @@ import React from 'react';
 import { View } from 'react-native';
 import BackdropPluginContext from '../BackdropPluginContext';
 import { BACKGROUND_OPTIONS } from '../BackdropPluginContextProvider';
-import getNextArrayItem from 'react-native-sandbox/src/utils/getNextArrayItem'; 
-import Chip from 'react-native-sandbox/src/ui/components/Chip';
-import Icon from 'react-native-sandbox/src/ui/components/Icon';
+import { getNextArrayItem } from 'react-native-sandbox/internal'; 
+import { Chip, Icon } from 'react-native-sandbox/components';
 
 export function ColorChip() {
     const { backdrop, setBackdrop } = React.useContext(BackdropPluginContext);

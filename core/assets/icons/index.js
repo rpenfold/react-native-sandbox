@@ -29,7 +29,7 @@ function getIconByName(name) {
         case 'view-split-vertical':
             return ViewSplitVertical;
         default:
-            return null;
+            return Circle;
     }
 }
 

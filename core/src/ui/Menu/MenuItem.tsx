@@ -1,7 +1,7 @@
 import React, {ReactNode} from 'react';
 import {Animated, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Collapsible from 'react-native-collapsible/Collapsible';
-import { ComponentDefinition } from '../../../sandbox.types';
+import { ComponentDefinition } from '../../sandbox.types';
 import { useTheme } from '../theme';
 
 const styles = StyleSheet.create({

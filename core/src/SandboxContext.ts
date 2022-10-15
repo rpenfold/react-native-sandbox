@@ -1,5 +1,5 @@
 import React from 'react';
-import {SandboxContextData} from '../sandbox.types';
+import {SandboxContextData} from './sandbox.types';
 
 const SandboxContext = React.createContext<SandboxContextData>({
   activeComponent: null,

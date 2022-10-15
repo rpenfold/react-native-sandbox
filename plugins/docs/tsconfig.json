@@ -2,6 +2,8 @@
 {
   "extends": "react-native-sandbox/tsconfig",
   "compilerOptions": {
-    "outDir": "../../dist/@react-native-sandbox/docs"
-  }
+    "outDir": "./dist",
+    "rootDir": "."
+  },
+  "include": ["./index.ts", "src"]
 }

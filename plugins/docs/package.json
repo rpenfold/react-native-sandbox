@@ -1,8 +1,8 @@
 {
   "name": "@react-native-sandbox/docs",
-  "version": "0.1.0",
+  "version": "0.1.18",
   "description": "A plugin for react-native-sandbox to enable support for documentation",
-  "main": "index.ts",
+  "main": "dist/index.js",
   "scripts": {
     "build": "rm -rf ./dist && tsc",
     "prepare": "npm run build",
