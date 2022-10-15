@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import {SafeAreaView, StyleSheet, Text, TouchableHighlight, View} from 'react-native';
 import Menu from '../../Menu';
 import UIFrame from '../../Frame';

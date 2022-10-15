@@ -38,7 +38,7 @@ interface Props {
 }
 
 function MenuItem(props: Props) {
-  const {activeComponent, subItems, title, onPress} = props;
+  const {subItems, title, onPress} = props;
   const [collapsed, setCollapsed] = React.useState<boolean>(true);
   const indicatorAnim = React.useRef(new Animated.Value(0)).current;
   const { colors } = useTheme();
@@ -70,9 +70,6 @@ function MenuItem(props: Props) {
         <Collapsible collapsed={collapsed}>
           <View style={[styles.subItemGroup, { backgroundColor: colors.surface, borderColor: colors.divider }]}>
             {Object.keys(subItems).map((key) => {
-              const isSelected =
-                activeComponent?.group === title &&
-                activeComponent.name === key;
               const maybeComponent = subItems[key];
               return (
                 <TouchableOpacity

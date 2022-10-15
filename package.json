@@ -1,6 +1,7 @@
 {
   "name": "react-native-sandbox-monorepo",
   "version": "0.1.19",
+  "private": true,
   "description": "A sandbox environment for building, documenting, and presenting components in React Native",
   "repository": {
     "type": "git",

@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSandbox } from 'react-native-sandbox/internal';
-import { useTheme } from 'react-native-sandbox/internal';
 import { getSandboxOptionsForPlugin } from 'react-native-sandbox/internal';
 import GridPluginContext, { GridType } from './GridPluginContext';
 import GridContainer from './components/GridContainer';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Animated, Dimensions, PanResponder, Pressable, StyleSheet, View, useWindowDimensions } from 'react-native';
+import { Animated, Pressable, StyleSheet, View, useWindowDimensions } from 'react-native';
 
 const styles = StyleSheet.create({
     container: {

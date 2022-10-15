@@ -1,4 +1,4 @@
-import React, {Component, ComponentType, ReactNode} from 'react';
+import {ComponentType, ReactNode} from 'react';
 import { ViewStyle } from 'react-native';
 
 export enum ControlType {
