@@ -59,7 +59,7 @@ The built-in controls are the following:
 | Select | useSelect | A value selector |
 | Text | useText | A text input |
 
-![Demo](./docs/images/demo.gif)
+![Demo](/docs/images/controls-demo.gif)
 
 ## Custom Controls
 

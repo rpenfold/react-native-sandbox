@@ -27,7 +27,7 @@ function Sandbox() {
 
 By default all sandboxes will now have the backdrop actions added to the toolbar. Tapping the backdrop icon will iterate through the different backdrop options. (transparent, white, black, gray)
 
-![Demo](./docs/images/demo.gif)
+![Demo](/docs/images/backdrop-demo.gif)
 
 To disable backdrop on a given sandbox you can provide a plugin configuration:
 
