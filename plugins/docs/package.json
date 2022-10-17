@@ -1,6 +1,6 @@
 {
   "name": "@react-native-sandbox/docs",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "description": "A plugin for react-native-sandbox to enable support for documentation",
   "main": "dist/index.js",
   "scripts": {
