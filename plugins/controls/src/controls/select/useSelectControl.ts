@@ -3,7 +3,7 @@ import useControls from "../../useControls";
 import { ControlType } from "../../ControlsPluginContext";
 import getId from '../../utils/getId';
 
-function useSelectControl<T = string | number>(
+function useSelectControl<T extends string | number>(
   label: string,
   initialValue: T,
   options: Array<T | {label: string; value: T}>,
